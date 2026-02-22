@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useI18n } from '@/lib/i18n';
 import { CategoryCard } from './CategoryCard';
 import { useMarketplaceStore, useHydrated } from '@/store/marketplaceStore';
 import type { KitCategory, LocalizedString } from '@/types';
@@ -92,7 +92,7 @@ export function CategorySelector({ locale, categories }: CategorySelectorProps) 
   const router = useRouter();
   const hydrated = useHydrated();
   const { selectedRole, setSelectedRole } = useMarketplaceStore();
-  const t = useTranslations('home');
+  const { t } = useI18n();
   const displayCategories = categories ?? DEFAULT_CATEGORIES;
 
   const handleCategoryClick = (categoryId: KitCategory) => {
@@ -100,8 +100,8 @@ export function CategorySelector({ locale, categories }: CategorySelectorProps) 
     router.push(`/${locale}/browse/${categoryId}`);
   };
 
-  const title = t('heroTitle');
-  const subtitle = t('heroSubtitle');
+  const title = t('home.heroTitle');
+  const subtitle = t('home.heroSubtitle');
 
   return (
     <section aria-labelledby="category-selector-heading">

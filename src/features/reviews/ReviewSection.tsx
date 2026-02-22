@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from 'react';
 import { Star, Loader2 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useI18n } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 import { StarRating } from '@/components/ui/StarRating';
 import { ReviewCard } from './ReviewCard';
@@ -55,9 +55,9 @@ export function ReviewSection({ kitName, locale, className }: ReviewSectionProps
     setPage((p) => p + 1);
   }, [displayReviews]);
 
-  const tKit = useTranslations('kit');
+  const { t: tFn } = useI18n();
   const t = {
-    title: tKit('reviews'),
+    title: tFn('kit.reviews'),
     noReviews: locale === 'ko' ? '아직 리뷰가 없습니다.' : 'No reviews yet.',
     loadMore: locale === 'ko' ? '더 보기' : 'Load More',
     loadingMore: locale === 'ko' ? '불러오는 중...' : 'Loading...',

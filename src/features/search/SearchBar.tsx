@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useI18n } from '@/lib/i18n';
 import { Search, Clock, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useMarketplaceStore } from '@/store/marketplaceStore';
@@ -29,10 +29,10 @@ export function SearchBar({
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
-  const tNav = useTranslations('nav');
+  const { t } = useI18n();
   const { recentSearches, addRecentSearch } = useMarketplaceStore();
 
-  const placeholder = tNav('searchPlaceholder');
+  const placeholder = t('nav.searchPlaceholder');
 
   useEffect(() => {
     if (autoFocus) {

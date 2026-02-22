@@ -1,7 +1,7 @@
 'use client';
 
 import { ThumbsUp, ShieldCheck } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useI18n } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 import { StarRating } from '@/components/ui/StarRating';
 import type { Review } from '@/types/review.types';
@@ -36,11 +36,10 @@ function formatRelativeDate(dateStr: string, locale: 'ko' | 'en'): string {
 }
 
 export function ReviewCard({ review, locale, className }: ReviewCardProps) {
-  const tReview = useTranslations('review');
-  const tKit = useTranslations('kit');
-  const helpfulLabel = tReview('helpful');
-  const verifiedLabel = tReview('verified');
-  const versionLabel = tKit('version');
+  const { t } = useI18n();
+  const helpfulLabel = t('review.helpful');
+  const verifiedLabel = t('review.verified');
+  const versionLabel = t('kit.version');
 
   return (
     <article

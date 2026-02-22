@@ -1,14 +1,10 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { notFound } from 'next/navigation';
-import { NextIntlClientProvider } from 'next-intl';
+import { I18nProvider } from '@/lib/i18n';
 import { Providers } from '@/app/providers';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
-import koMessages from '@/messages/ko/common.json';
-import enMessages from '@/messages/en/common.json';
-
-const allMessages: Record<string, typeof koMessages> = { ko: koMessages, en: enMessages };
 
 const inter = Inter({
   subsets: ['latin'],
@@ -50,7 +46,6 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   }
 
   const typedLocale = locale as Locale;
-  const messages = allMessages[typedLocale] ?? allMessages.ko;
 
   return (
     <html lang={typedLocale}>
@@ -61,7 +56,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         >
           {typedLocale === 'ko' ? '본문으로 건너뛰기' : 'Skip to content'}
         </a>
-        <NextIntlClientProvider locale={typedLocale} messages={messages}>
+        <I18nProvider locale={typedLocale}>
           <Providers>
             <div className="flex min-h-screen flex-col bg-slate-50">
               <Header locale={typedLocale} />
@@ -71,7 +66,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
               <Footer locale={typedLocale} />
             </div>
           </Providers>
-        </NextIntlClientProvider>
+        </I18nProvider>
       </body>
     </html>
   );

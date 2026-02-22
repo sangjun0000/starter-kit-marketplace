@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { X, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useI18n } from '@/lib/i18n';
 import { cn } from '@/lib/utils';
 import { useMarketplaceStore, useHydrated } from '@/store/marketplaceStore';
 import type { KitCategory } from '@/types';
@@ -48,11 +48,11 @@ export function OnboardingBanner({ locale, className }: OnboardingBannerProps) {
     router.push(`/${locale}/browse/${role}`);
   };
 
-  const tOnboarding = useTranslations('onboarding');
-  const t = {
-    title: tOnboarding('title'),
-    subtitle: tOnboarding('subtitle'),
-    dismiss: tOnboarding('dismiss'),
+  const { t } = useI18n();
+  const tStrings = {
+    title: t('onboarding.title'),
+    subtitle: t('onboarding.subtitle'),
+    dismiss: t('onboarding.dismiss'),
   };
 
   return (
@@ -67,7 +67,7 @@ export function OnboardingBanner({ locale, className }: OnboardingBannerProps) {
       <button
         type="button"
         onClick={handleDismiss}
-        aria-label={t.dismiss}
+        aria-label={tStrings.dismiss}
         className="absolute right-3 top-3 rounded-lg p-1.5 text-slate-400 hover:bg-white/60 hover:text-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
       >
         <X className="h-4 w-4" aria-hidden="true" />
@@ -78,8 +78,8 @@ export function OnboardingBanner({ locale, className }: OnboardingBannerProps) {
           <Sparkles className="h-4 w-4" aria-hidden="true" />
         </span>
         <div>
-          <p className="font-semibold text-slate-900 text-sm">{t.title}</p>
-          <p className="text-xs text-slate-500 mt-0.5">{t.subtitle}</p>
+          <p className="font-semibold text-slate-900 text-sm">{tStrings.title}</p>
+          <p className="text-xs text-slate-500 mt-0.5">{tStrings.subtitle}</p>
         </div>
       </div>
 

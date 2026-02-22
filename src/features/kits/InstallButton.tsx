@@ -1,7 +1,7 @@
 'use client';
 
 import { Loader2, Check, AlertCircle, Download, RefreshCw } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useI18n } from '@/lib/i18n';
 import { cn, localize } from '@/lib/utils';
 import type { InstallState, LocalizedString } from '@/types';
 
@@ -72,11 +72,11 @@ export function InstallButton({
   locale,
   className,
 }: InstallButtonProps) {
-  const t = useTranslations('kit');
+  const { t } = useI18n();
   const labels = {
-    install: t('install'),
-    installed: t('installed'),
-    update: t('update'),
+    install: t('kit.install'),
+    installed: t('kit.installed'),
+    update: t('kit.update'),
     error: locale === 'ko' ? '다시 시도' : 'Try Again',
   };
   const config = getButtonConfig(state, labels);

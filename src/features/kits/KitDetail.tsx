@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { useI18n } from '@/lib/i18n';
 import {
   Package, ChevronRight, AlertCircle, Globe, Code, Server, Layers,
   Cloud, Smartphone, BarChart2, PenTool,
@@ -30,20 +30,19 @@ export function KitDetail({ kit, locale }: KitDetailProps) {
   const [session, setSession] = useState<InstallSession | null>(null);
   const [installState, setInstallState] = useState<InstallState>('idle');
 
-  const tKit = useTranslations('kit');
-  const tNav = useTranslations('nav');
+  const { t: tFn } = useI18n();
   const IconComponent = ICON_MAP[kit.icon] ?? Package;
   const name = localize(kit.displayName, locale);
   const description = localize(kit.description, locale);
 
   const t = {
-    breadcrumbHome: tNav('home'),
-    breadcrumbBrowse: tNav('browse'),
+    breadcrumbHome: tFn('nav.home'),
+    breadcrumbBrowse: tFn('nav.browse'),
     official: locale === 'ko' ? '공식' : 'Official',
-    version: tKit('version'),
-    installs: tKit('install'),
-    requirements: tKit('requirements'),
-    tools: tKit('includes'),
+    version: tFn('kit.version'),
+    installs: tFn('kit.install'),
+    requirements: tFn('kit.requirements'),
+    tools: tFn('kit.includes'),
     noRequirements: locale === 'ko' ? '특별한 요구사항 없음' : 'No special requirements',
   };
 

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useI18n } from '@/lib/i18n';
 import { Search, Menu, X, Package, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useMarketplaceStore, useHydrated } from '@/store/marketplaceStore';
@@ -18,7 +18,7 @@ export function Header({ locale }: HeaderProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const pathname = usePathname();
-  const t = useTranslations('nav');
+  const { t } = useI18n();
   const hydrated = useHydrated();
   const installedKits = useMarketplaceStore((s) => s.installedKits);
   const installedCount = hydrated ? installedKits.length : 0;
@@ -36,9 +36,9 @@ export function Header({ locale }: HeaderProps) {
   };
 
   const nav = {
-    browse: t('browse'),
-    myKits: t('myKits'),
-    searchPlaceholder: t('searchPlaceholder'),
+    browse: t('nav.browse'),
+    myKits: t('nav.myKits'),
+    searchPlaceholder: t('nav.searchPlaceholder'),
   };
 
   return (
