@@ -1,0 +1,79 @@
+{
+  "site": {
+    "title": "Starter Kit 마켓플레이스",
+    "description": "역할에 맞는 도구를 한번에 설치하세요"
+  },
+  "nav": {
+    "home": "홈",
+    "browse": "둘러보기",
+    "myKits": "내 Kit",
+    "search": "검색",
+    "submit": "Kit 제출",
+    "searchPlaceholder": "Kit 이름, 역할로 검색..."
+  },
+  "home": {
+    "heroTitle": "당신은 어떤 일을 하시나요?",
+    "heroSubtitle": "역할을 선택하면 필요한 도구를 한번에 설치할 수 있어요",
+    "popularKits": "인기 Kit",
+    "newestKits": "최신 Kit",
+    "viewAll": "모두 보기"
+  },
+  "kit": {
+    "install": "설치하기",
+    "installed": "설치됨",
+    "update": "업데이트",
+    "reviews": "리뷰",
+    "difficulty": "난이도",
+    "includes": "포함된 도구",
+    "requirements": "요구사항",
+    "version": "버전"
+  },
+  "terms": {
+    "skill": "기능",
+    "agent": "AI 어시스턴트",
+    "mcp_server": "서버 연결",
+    "template": "프로젝트 템플릿",
+    "plugin": "확장 기능"
+  },
+  "difficulty": {
+    "1": "쉬움",
+    "2": "보통",
+    "3": "어려움"
+  },
+  "install": {
+    "chooseMethod": "설치 방법 선택",
+    "deeplink": "자동 설치 (권장)",
+    "deeplinkDesc": "Claude Code가 열리며 자동으로 설치됩니다",
+    "cli": "명령어 복사",
+    "cliDesc": "터미널에 붙여넣어 설치하세요",
+    "copied": "복사됨!",
+    "success": "설치 완료!",
+    "successMessage": "시작하기 가이드를 확인하세요",
+    "error": "설치 실패"
+  },
+  "categories": {
+    "website": "웹사이트 제작",
+    "frontend": "프론트엔드",
+    "backend": "백엔드",
+    "fullstack": "풀스택",
+    "devops": "DevOps",
+    "mobile": "모바일",
+    "data": "데이터 분석",
+    "content": "콘텐츠 제작"
+  },
+  "onboarding": {
+    "title": "Claude Code 스타터 Kit에 오신 것을 환영합니다!",
+    "subtitle": "역할을 선택하면 필요한 도구를 바로 추천해드릴게요.",
+    "dismiss": "닫기"
+  },
+  "review": {
+    "title": "리뷰 작성",
+    "noReviews": "아직 리뷰가 없습니다.",
+    "loadMore": "더 보기",
+    "loading": "불러오는 중...",
+    "error": "리뷰를 불러오지 못했습니다.",
+    "ratings": "평가",
+    "verified": "설치 확인됨",
+    "helpful": "도움됨"
+  }
+}

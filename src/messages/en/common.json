@@ -1,0 +1,79 @@
+{
+  "site": {
+    "title": "Starter Kit Marketplace",
+    "description": "Install the right tools for your role in one click"
+  },
+  "nav": {
+    "home": "Home",
+    "browse": "Browse",
+    "myKits": "My Kits",
+    "search": "Search",
+    "submit": "Submit Kit",
+    "searchPlaceholder": "Search by kit name or role..."
+  },
+  "home": {
+    "heroTitle": "What do you do?",
+    "heroSubtitle": "Choose your role and get all the tools you need installed at once",
+    "popularKits": "Popular Kits",
+    "newestKits": "Newest Kits",
+    "viewAll": "View All"
+  },
+  "kit": {
+    "install": "Install",
+    "installed": "Installed",
+    "update": "Update",
+    "reviews": "Reviews",
+    "difficulty": "Difficulty",
+    "includes": "Included Tools",
+    "requirements": "Requirements",
+    "version": "Version"
+  },
+  "terms": {
+    "skill": "Feature",
+    "agent": "AI Assistant",
+    "mcp_server": "Server Connection",
+    "template": "Project Template",
+    "plugin": "Extension"
+  },
+  "difficulty": {
+    "1": "Easy",
+    "2": "Medium",
+    "3": "Hard"
+  },
+  "install": {
+    "chooseMethod": "Choose Install Method",
+    "deeplink": "Auto Install (Recommended)",
+    "deeplinkDesc": "Opens Claude Code and installs automatically",
+    "cli": "Copy Command",
+    "cliDesc": "Paste into your terminal to install",
+    "copied": "Copied!",
+    "success": "Installation Complete!",
+    "successMessage": "Check out the getting started guide",
+    "error": "Installation Failed"
+  },
+  "categories": {
+    "website": "Website Builder",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "fullstack": "Full Stack",
+    "devops": "DevOps",
+    "mobile": "Mobile",
+    "data": "Data Analysis",
+    "content": "Content Creation"
+  },
+  "onboarding": {
+    "title": "Welcome to Claude Code Starter Kits!",
+    "subtitle": "Choose your role and we'll recommend the right tools for you.",
+    "dismiss": "Dismiss"
+  },
+  "review": {
+    "title": "Write a Review",
+    "noReviews": "No reviews yet.",
+    "loadMore": "Load More",
+    "loading": "Loading...",
+    "error": "Failed to load reviews.",
+    "ratings": "ratings",
+    "verified": "Verified Install",
+    "helpful": "Helpful"
+  }
+}
