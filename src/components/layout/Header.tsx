@@ -6,7 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { Search, Menu, X, Package, BookOpen } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useMarketplaceStore } from '@/store/marketplaceStore';
+import { useMarketplaceStore, useHydrated } from '@/store/marketplaceStore';
 
 interface HeaderProps {
   locale: 'ko' | 'en';
@@ -19,8 +19,9 @@ export function Header({ locale }: HeaderProps) {
   const router = useRouter();
   const pathname = usePathname();
   const t = useTranslations('nav');
+  const hydrated = useHydrated();
   const installedKits = useMarketplaceStore((s) => s.installedKits);
-  const installedCount = installedKits.length;
+  const installedCount = hydrated ? installedKits.length : 0;
 
   const otherLocale = locale === 'ko' ? 'en' : 'ko';
   // Swap locale segment in current path

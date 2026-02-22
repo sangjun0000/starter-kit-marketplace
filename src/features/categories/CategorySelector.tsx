@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { CategoryCard } from './CategoryCard';
-import { useMarketplaceStore } from '@/store/marketplaceStore';
+import { useMarketplaceStore, useHydrated } from '@/store/marketplaceStore';
 import type { KitCategory, LocalizedString } from '@/types';
 
 interface CategoryData {
@@ -90,6 +90,7 @@ const DEFAULT_CATEGORIES: CategoryData[] = [
 
 export function CategorySelector({ locale, categories }: CategorySelectorProps) {
   const router = useRouter();
+  const hydrated = useHydrated();
   const { selectedRole, setSelectedRole } = useMarketplaceStore();
   const t = useTranslations('home');
   const displayCategories = categories ?? DEFAULT_CATEGORIES;
@@ -123,7 +124,7 @@ export function CategorySelector({ locale, categories }: CategorySelectorProps) 
           <div key={category.id} role="listitem">
             <CategoryCard
               category={category}
-              isSelected={selectedRole === category.id}
+              isSelected={hydrated && selectedRole === category.id}
               onClick={handleCategoryClick}
               locale={locale}
               className="w-full h-full"

@@ -5,7 +5,7 @@ import { X, Sparkles } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
-import { useMarketplaceStore } from '@/store/marketplaceStore';
+import { useMarketplaceStore, useHydrated } from '@/store/marketplaceStore';
 import type { KitCategory } from '@/types';
 
 interface OnboardingBannerProps {
@@ -23,17 +23,18 @@ const QUICK_ROLES: { id: KitCategory; label: { ko: string; en: string }; emoji: 
 
 export function OnboardingBanner({ locale, className }: OnboardingBannerProps) {
   const [visible, setVisible] = useState(false);
+  const hydrated = useHydrated();
   const { onboardingCompleted, completeOnboarding, setSelectedRole } = useMarketplaceStore();
   const router = useRouter();
 
   useEffect(() => {
-    // Show banner only on first visit
-    if (!onboardingCompleted) {
+    // Show banner only on first visit, after hydration
+    if (hydrated && !onboardingCompleted) {
       setVisible(true);
     }
-  }, [onboardingCompleted]);
+  }, [hydrated, onboardingCompleted]);
 
-  if (!visible || onboardingCompleted) return null;
+  if (!hydrated || !visible || onboardingCompleted) return null;
 
   const handleDismiss = () => {
     setVisible(false);

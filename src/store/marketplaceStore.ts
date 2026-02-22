@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
+import { useEffect, useState } from 'react';
 import type { KitCategory, InstallState } from '@/types';
 
 interface InstalledKit {
@@ -11,6 +12,7 @@ interface InstalledKit {
 }
 
 interface MarketplaceState {
+  _hydrated: boolean;
   selectedRole: KitCategory | null;
   onboardingCompleted: boolean;
   preferredLocale: 'ko' | 'en';
@@ -35,6 +37,7 @@ interface MarketplaceState {
 export const useMarketplaceStore = create<MarketplaceState>()(
   persist(
     (set) => ({
+      _hydrated: false,
       selectedRole: null,
       onboardingCompleted: false,
       preferredLocale: 'ko',
@@ -79,6 +82,18 @@ export const useMarketplaceStore = create<MarketplaceState>()(
         installedKits: state.installedKits,
         recentSearches: state.recentSearches,
       }),
+      onRehydrateStorage: () => () => {
+        useMarketplaceStore.setState({ _hydrated: true });
+      },
     },
   ),
 );
+
+// Hook to safely use store values after hydration (prevents SSR mismatch)
+export function useHydrated() {
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+  return hydrated;
+}
